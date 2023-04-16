@@ -18,5 +18,8 @@
       "@screens/*": ["Screens/*"]
     }
   },
+  "types": [
+    "node"
+  ],
   "exclude": ["node_modules"]
 }
