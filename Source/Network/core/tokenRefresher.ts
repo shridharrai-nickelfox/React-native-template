@@ -31,7 +31,7 @@ export async function refreshAuthToken(refreshToken:string):Promise<Boolean> {
   }
 }
 
-function urlBuilder(router: APIRouter, params:string[]): string {
+function urlBuilder<T>(router: APIRouter, params:string[] | T): string {
   let uri = ""
   if (typeof router.version === "string") {
     uri = `/${router.version}`

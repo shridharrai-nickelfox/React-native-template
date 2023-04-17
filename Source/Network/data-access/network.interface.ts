@@ -7,7 +7,7 @@ export interface EndPoint {
 
 
 export interface NetworkAPIRouter {
-    baseURL:string;
+    baseURL:string | undefined;
     endpoint:string;
     method:string;
     version: string | null;
@@ -16,7 +16,7 @@ export interface NetworkAPIRouter {
 
 
 export interface ResponseParser {
-    data:unknown;
+    data: unknown;
     success?:boolean;
     code:Number;
     message:string;

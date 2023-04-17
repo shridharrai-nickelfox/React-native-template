@@ -4,11 +4,11 @@
 
 import {APIResponse} from './responseParser';
 
-export default async function offlineManager(path: {
+export default async function offlineManager<T>(path: {
   data: any;
   code: number;
   message: string;
-}): Promise<APIResponse> {
+}): Promise<APIResponse<T>> {
   const {data, code, message} = path;
   return new APIResponse(data, true, code, message);
 }

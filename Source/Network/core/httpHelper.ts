@@ -20,7 +20,7 @@ export const HTTP_METHODS = {
  * @description API Router
  */
 export class APIRouter implements NetworkAPIRouter {
-  baseURL: string;
+  baseURL: string | undefined;
   endpoint: string;
   method: HttpMethod;
   version: string | null;
@@ -41,7 +41,7 @@ export class APIRouter implements NetworkAPIRouter {
  * @description API Router with offline data
  */
 export class APIWithOfflineRouter implements NetworkAPIRouter {
-  baseURL: string;
+  baseURL: string | undefined;
   endpoint: string;
   method: HttpMethod;
   version: string | null;
@@ -65,12 +65,12 @@ export class APIWithOfflineRouter implements NetworkAPIRouter {
  * @description API Router with custom Base URL
  */
 export class APICustomRouter implements NetworkAPIRouter {
-  baseURL: string;
+  baseURL: string | undefined;
   endpoint: string;
   method: HttpMethod;
   version: string | null;
 
-  constructor(baseUrl: string, endpoint: string, method: HttpMethod) {
+  constructor(baseUrl: string| undefined, endpoint: string, method: HttpMethod) {
     this.baseURL = baseUrl;
     this.endpoint = endpoint;
     this.method = method;

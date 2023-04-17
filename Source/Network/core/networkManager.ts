@@ -50,7 +50,7 @@ export default function networkManager(router:APIRouter, withFile:boolean = fals
   const AppEnvIsDev = process.env.REACT_APP_APP_ENV === "dev"
   let refreshCount = 0
 
-  async function request(body = {}, params = {} || []): Promise<APIResponse> {
+  async function request<T>(body = {}, params = {} || []): Promise<APIResponse<T>> {
     const url = urlBuilder(router, params)
     const getHttpMethod = router.method !== HTTP_METHODS.GET
     const getArrayParams = !Array.isArray(params) && Object.keys(params).length
@@ -97,7 +97,7 @@ export default function networkManager(router:APIRouter, withFile:boolean = fals
 }
 
 // Prepare endpoint url with params
-function urlBuilder(router: APIRouter, params: string[]) {
+function urlBuilder<T>(router: APIRouter, params: string[] | T) {
   let uri:string = ""
   if (typeof router.version === "string") {
     uri = `/${router.version}`
