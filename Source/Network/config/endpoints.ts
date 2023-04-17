@@ -11,6 +11,7 @@ export const API = {
     // if you want to return offline json if api fails
     LOGIN: new APIWithOfflineRouter("/user/login/", HTTP_METHODS.POST, OFFLINE.LOGIN),
     SIGNUP: new APIWithOfflineRouter("/user/signup/", HTTP_METHODS.POST, OFFLINE.SIGNUP),
+    REFRESH_TOKEN: new APIRouter("/user/token/refresh", HTTP_METHODS.POST)
   },
   USER: {
     PROFILE: new APIWithOfflineRouter("/user/profile/", HTTP_METHODS.GET, OFFLINE.PROFILE),

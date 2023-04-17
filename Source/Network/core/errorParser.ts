@@ -11,10 +11,10 @@ export const apiError = (error: Error): void => {
   }
 };
 
-export const offlineNotation = () => {
+export const offlineNotation = ():void => {
   console.log(
     'The network seems to be not working, proceeding with offline data',
   );
 };
 
-export type Error = Array<string> | {message: string};
+export type Error = Array<string> | {message: string} | string;

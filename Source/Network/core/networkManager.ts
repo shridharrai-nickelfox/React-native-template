@@ -11,6 +11,7 @@ import offlineManager from "./offlineManager"
 import { HTTP_STATUS } from "./statusCode"
 import { apiError, offlineNotation } from "./errorParser"
 import { UserState } from "redux/dispatcher/UserState"
+import { APIRouter } from './httpHelper';
 
 // ********************
 // Create a new Instance of NetworkManager by passing APIRouter argument
@@ -30,7 +31,7 @@ import { UserState } from "redux/dispatcher/UserState"
 // const result = await instance.request(payload, ["id1", "id2"])
 // ********************
 
-export default function networkManager(router, withFile = false) {
+export default function networkManager(router:APIRouter, withFile:boolean = false) {
   const { TIMEOUT, API_AUTH_HEADER, AUTH_TYPE, CONTENT_TYPE } = APIConfig
   const REQ_CONTENT_TYPE = withFile ? CONTENT_TYPE.MULTIPART : CONTENT_TYPE.JSON
 
@@ -49,7 +50,7 @@ export default function networkManager(router, withFile = false) {
   const AppEnvIsDev = process.env.REACT_APP_APP_ENV === "dev"
   let refreshCount = 0
 
-  async function request(body = {}, params = {} || []) {
+  async function request(body = {}, params = {} || []): Promise<APIResponse> {
     const url = urlBuilder(router, params)
     const getHttpMethod = router.method !== HTTP_METHODS.GET
     const getArrayParams = !Array.isArray(params) && Object.keys(params).length
@@ -96,8 +97,8 @@ export default function networkManager(router, withFile = false) {
 }
 
 // Prepare endpoint url with params
-function urlBuilder(router, params) {
-  let uri = ""
+function urlBuilder(router: APIRouter, params: string[]) {
+  let uri:string = ""
   if (typeof router.version === "string") {
     uri = `/${router.version}`
   }
@@ -112,9 +113,9 @@ function urlBuilder(router, params) {
 }
 
 // Prepare endpoint body for no GET requests
-function httpBodyBuilder(body, withFile) {
+function httpBodyBuilder(body:any, withFile:boolean) {
   if (withFile) {
-    const formData = new FormData()
+    const formData = new FormData() as FormData
     for (let key in body) {
       if (body[key] instanceof FileList) {
         for (let file of body[key]) {

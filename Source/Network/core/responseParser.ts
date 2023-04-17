@@ -30,7 +30,7 @@ export class APIError implements ResponseParser {
   message:string;
   error:string
 
-  constructor(error = "", code:Number) {
+  constructor(error = "", code:Number) {  
     this.success = false
     this.data = null
     this.error = error

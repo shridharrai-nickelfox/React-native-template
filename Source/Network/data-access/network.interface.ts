@@ -17,7 +17,7 @@ export interface NetworkAPIRouter {
 
 export interface ResponseParser {
     data:unknown;
-    success:boolean;
+    success?:boolean;
     code:Number;
     message:string;
     error:string | null;
@@ -28,4 +28,10 @@ export interface APIAbort {
     controller: AbortController,
     initiate:() => AbortController,
     abort:() => void
+  }
+
+
+  export type Router = {
+    version: string;
+    endpoint: string;
   }
