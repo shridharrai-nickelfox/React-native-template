@@ -7,7 +7,7 @@
 import { API } from "../config/endpoints"
 import { APIConfig } from "../config/serverConfig"
 // import { CookieKeys, CookieOptions } from "constants/cookieKeys"
-import { APIRouter } from './httpHelper';
+import { urlBuilder } from './httpHelper';
 
 export async function refreshAuthToken(refreshToken:string):Promise<Boolean> {
   try {
@@ -31,17 +31,3 @@ export async function refreshAuthToken(refreshToken:string):Promise<Boolean> {
   }
 }
 
-function urlBuilder<T>(router: APIRouter, params:string[] | T): string {
-  let uri = ""
-  if (typeof router.version === "string") {
-    uri = `/${router.version}`
-  }
-  uri = uri.concat(router.endpoint)
-  // all params in form of uri/id1/id2/id3
-  if (Array.isArray(params)) {
-    for (let key of params) {
-      uri = uri.concat("/", key)
-    }
-  }
-  return uri
-}

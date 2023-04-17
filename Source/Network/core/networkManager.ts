@@ -1,7 +1,7 @@
 // Higher Order Class to make all network calls
 import { Cookies } from "react-cookie"
-import axios from "axios"
-import { APIWithOfflineRouter, HTTP_METHODS } from "./httpHelper"
+import axios, { AxiosError } from "axios"
+import { APIWithOfflineRouter, HTTP_METHODS, urlBuilder } from "./httpHelper"
 import { APIConfig } from "../config/serverConfig"
 import { APIError, APIResponse } from "./responseParser"
 import { refreshAuthToken } from "./tokenRefresher"
@@ -97,20 +97,7 @@ export default function networkManager(router:APIRouter, withFile:boolean = fals
 }
 
 // Prepare endpoint url with params
-function urlBuilder<T>(router: APIRouter, params: string[] | T) {
-  let uri:string = ""
-  if (typeof router.version === "string") {
-    uri = `/${router.version}`
-  }
-  uri = uri.concat(router.endpoint)
-  // all params in form of uri/id1/id2/id3
-  if (Array.isArray(params)) {
-    for (let key of params) {
-      uri = uri.concat("/", key)
-    }
-  }
-  return uri
-}
+
 
 // Prepare endpoint body for no GET requests
 function httpBodyBuilder(body:any, withFile:boolean) {
