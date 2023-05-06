@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
+    "types": ["node"],
     "baseUrl": "./Source/",
     "paths": {
       "@navigators/*": ["Navigators/*"],
@@ -18,6 +19,6 @@
       "@screens/*": ["Screens/*"]
     }
   },
-  
+
   "exclude": ["node_modules"]
 }
