@@ -1,13 +1,13 @@
 // App wide dispatcher
 
 import Stores from "../Stores/Store";
-import Actions from "../Actions/LoaderActions";
+import { LoaderActions } from "@redux/Slices/LoaderSlice";
 
 export default LoaderDispatcher = {
   show: () => {
-    Stores.dispatch({ type: Actions.SHOW });
+    Stores.dispatch(LoaderActions.SHOW());
   },
   hide: () => {
-    Stores.dispatch({ type: Actions.HIDE });
+    Stores.dispatch(LoaderActions.HIDE());
   }
 };
