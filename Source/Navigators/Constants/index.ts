@@ -3,5 +3,5 @@ export const NavigationPaths = {
   INTRO: 'Intro',
   SIGNUP: 'Signup',
   LOGIN: 'Login',
-  DASHBOARD: 'Dashboard',
+  Tab: 'TabNavigator',
 };

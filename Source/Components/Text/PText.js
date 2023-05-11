@@ -3,7 +3,7 @@ import { Text } from "react-native";
 import { useTheme } from "react-native-paper";
 
 const PText = ({
-  variant = "body3",
+  variant = "regular",
   muted = false,
   textAlign = "auto",
   style = {},

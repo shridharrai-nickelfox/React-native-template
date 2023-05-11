@@ -1,79 +1,70 @@
-import React from "react";
-import { Image } from "react-native";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Closet from "../Screens/Feature/Closet";
-import Profile from "../Screens/Feature/Profile";
-import Home from "../Screens/Feature/Home";
-import { useTheme } from "react-native-paper";
-import { ActiveDot } from "@components";
 
-const Tab = createMaterialBottomTabNavigator();
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Dashboard from '@screens/UserDashboard'
+import Profile from '@screens/Profile/Index'
+import Settings from '@screens/Settings/Index'
+import { useTheme } from 'react-native-paper'
+import { Image, Text, View } from 'react-native'
 
-export function AppTabNavigator() {
-  const { colors } = useTheme();
+const Tab = createBottomTabNavigator()
 
+const TabBarCustomIcon = ({ source, title, focused }) => {
+  const theme = useTheme()
+  return <React.Fragment>
+    <View style={{ top: focused ? -16 : 0, backgroundColor: theme.colors.warning, padding: 8, alignItems: 'center', borderRadius: 30 }}>
+      <Image source={source}
+        style={{ width: 35, height: 35 }}
+      />
+      <Text style={{ textAlign: 'center' }}>{title}</Text>
+    </View>
+  </React.Fragment>
+}
+
+const AppTabNavigator = () => {
+  const theme = useTheme()
   return (
     <Tab.Navigator
-      barStyle={{
-        backgroundColor: colors.background
+      initialRouteName='Dashboard'
+      screenOptions={{
+        tabBarStyle: { backgroundColor: theme.colors.warning, height: 65, margin: 16, borderRadius: 20 },
+        tabBarLabelStyle: { display: 'none' }
       }}
-      labeled={false}>
-      <Tab.Screen
-        name="Home"
-        component={Home}
+    >
+      <Tab.Screen name="Profile" component={Profile}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <React.Fragment>
-              <Image
-                source={
-                  focused
-                    ? require("@icons/Tabs/Active/Home/Home.png")
-                    : require("@icons/Tabs/Inactive/Home/Home.png")
-                }
-              />
-              {focused && <ActiveDot />}
-            </React.Fragment>
-          )
+          tabBarIcon: ({ focused, color, size }) =>
+            <TabBarCustomIcon source={require("@images/tabbaricon/profile.png")}
+              title={"Profile"}
+              focused={focused}
+            />
+
         }}
       />
 
-      <Tab.Screen
-        name="Closet"
-        component={Closet}
+      <Tab.Screen name="Dashboard" component={Dashboard}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <React.Fragment>
-              <Image
-                source={
-                  focused
-                    ? require("@icons/Tabs/Active/Closet/Closet.png")
-                    : require("@icons/Tabs/Inactive/Closet/Closet.png")
-                }
-              />
-              {focused && <ActiveDot />}
-            </React.Fragment>
-          )
+          tabBarIcon: ({ focused, color, size }) =>
+            <TabBarCustomIcon source={require("@images/tabbaricon/plus.png")}
+              title={"Home"}
+              focused={focused}
+            />
+
+
         }}
       />
 
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
+      <Tab.Screen name="Setting" component={Settings}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <React.Fragment>
-              <Image
-                source={
-                  focused
-                    ? require("@icons/Tabs/Active/Profile/Profile.png")
-                    : require("@icons/Tabs/Inactive/Profile/Profile.png")
-                }
-              />
-              {focused && <ActiveDot />}
-            </React.Fragment>
-          )
+          tabBarIcon: ({ focused, color, size }) =>
+            <TabBarCustomIcon source={require("@images/tabbaricon/setting.png")}
+              title={"Setting"}
+              focused={focused}
+            />,
         }}
       />
     </Tab.Navigator>
-  );
+  )
 }
+
+export default AppTabNavigator

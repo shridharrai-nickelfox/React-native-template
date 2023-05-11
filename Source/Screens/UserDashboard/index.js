@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 const Dashboard = () => {
   return (
     <View>
-      <Text></Text>
+      <Text>Dashboard</Text>
     </View>
   );
 };
