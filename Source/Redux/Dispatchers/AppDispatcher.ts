@@ -1,16 +1,18 @@
 // App wide dispatcher
-import Stores from '../Stores/Store';
-import { AppActions } from '@redux/Slices/AppSlice';
+import {Stores} from '../Stores/Store';
+import {AppActions} from '@redux/Slices/AppSlice';
 
-export default AppDispatcher = {
-  setUserLoggedIn: data => {
+const AppDispatcher = {
+  setUserLoggedIn: (data: any) => {
     Stores.dispatch(AppActions.SET_TOKEN(data.tokens));
     Stores.dispatch(AppActions.LOGIN(data.user));
   },
   setUserLoggedOut: () => {
     Stores.dispatch(AppActions.LOGOUT());
   },
-  updateUserTokens: data => {
+  updateUserTokens: (data: any) => {
     Stores.dispatch(AppActions.SET_TOKEN(data));
   },
 };
+
+export default AppDispatcher;
