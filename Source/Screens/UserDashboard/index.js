@@ -1,15 +1,12 @@
-import CustomOTPInput from "@screens/otpValidator";
+
 import React from "react";
 import { View, Text } from "react-native";
 
 const Dashboard = () => {
+
   return (
-    <View style={{ flex: 1 }}>
-      <Text>Dashboard</Text>
-      <CustomOTPInput
-        numInputs={4}
-        onComplete={(otp) => { console.log(otp, "done") }}
-      />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{ fontWeight: 'bold' }}>Dashboard</Text>
     </View>
   );
 };

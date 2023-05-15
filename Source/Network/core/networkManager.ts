@@ -8,9 +8,11 @@ import {APIAborter} from './abortController';
 import offlineManager from './offlineManager';
 import {HTTP_STATUS} from './statusCode';
 import {apiError, offlineNotation} from './errorParser';
-import {UserState} from 'redux/dispatcher/UserState';
+// import {UserState} from 'redux/dispatcher/UserState';
 import {APIRouter} from './httpHelper';
 import {AsyncStorageUtils} from '@helpers/AsyncStorage';
+import {Stores} from '@redux/Stores/Store';
+import {AppActions} from '@redux/Slices/AppSlice';
 
 // ********************
 // Create a new Instance of NetworkManager by passing APIRouter argument
@@ -102,7 +104,8 @@ export default async function networkManager(
           // pass the control back to network manager
           return await request(body, params);
         } else {
-          UserState.observeLogout();
+          Stores.dispatch(AppActions.LOGOUT());
+          // UserState.observeLogout();
         }
       } else if (err.code === HTTP_STATUS.NETWORK_ERR) {
         apiError('Internal server error!');

@@ -35,7 +35,17 @@ const CustomOTPInput: React.FC<CustomOTPInputProps> = props => {
             />
           ))}
       </View>
-      <TouchableOpacity style={styles.button} onPress={oc.handleComplete}>
+      <TouchableOpacity
+        style={[
+          styles.button,
+          [
+            numInputs != oc.otp.length && {
+              backgroundColor: '#C4C4C4',
+            },
+          ],
+        ]}
+        disabled={numInputs != oc.otp.length}
+        onPress={oc.handleComplete}>
         <Text style={styles.buttonText}>Verify</Text>
       </TouchableOpacity>
     </View>

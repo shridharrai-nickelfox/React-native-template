@@ -3,5 +3,6 @@ export const NavigationPaths = {
   INTRO: 'Intro',
   SIGNUP: 'Signup',
   LOGIN: 'Login',
+  VERIFYOTP: 'Verifyotp',
   Tab: 'TabNavigator',
 };

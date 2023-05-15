@@ -31,6 +31,7 @@ const UseOtpController = (props: CustomOTPInputProps) => {
   };
 
   return {
+    otp,
     inputRefs,
     handleChangeInput,
     handleKeyPress,

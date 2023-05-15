@@ -5,6 +5,7 @@ import Splash from '../../Screens/Onboarding/Splash/Splash';
 import Signup from '../../Screens/Signup/Signup';
 import { NavigationPaths } from '@navigators/Constants';
 import AppTabNavigator from '@navigators/AppTabNavigator';
+import VerifyOtp from '@screens/VerifyOtp';
 
 
 export const Routes = [
@@ -12,5 +13,6 @@ export const Routes = [
   new RouteModel(NavigationPaths.INTRO, Intro, { headerShown: false }),
   new RouteModel(NavigationPaths.SIGNUP, Signup),
   new RouteModel(NavigationPaths.LOGIN, Login, { headerShown: false }),
+  new RouteModel(NavigationPaths.VERIFYOTP, VerifyOtp, { headerShown: false }),
   new RouteModel(NavigationPaths.Tab, AppTabNavigator, { headerShown: false, }),
 ];

@@ -24,7 +24,7 @@ const AppSlice = createSlice({
       state.authToken = null;
     },
     SET_TOKEN: (state, action) => {
-      state.authToken = action.payload;
+      state.authToken = action.payload.tokens;
       state.isLogged = true;
     },
   },
