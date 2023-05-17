@@ -1,14 +1,18 @@
-import { RouteModel } from "./Models/RouteModel";
-import Login from "../../Screens/Login/Index";
-import Intro from "../../Screens/Onboarding/Introduction/Intro";
-import Splash from "../../Screens/Onboarding/Splash/Splash";
-import Signup from "../../Screens/Signup/Signup";
-import Dashboard from "@screens/UserDashboard";
+import { RouteModel } from './Models/RouteModel';
+import Login from '../../Screens/Login/Index';
+import Intro from '../../Screens/Onboarding/Introduction/Intro';
+import Splash from '../../Screens/Onboarding/Splash/Splash';
+import Signup from '../../Screens/Signup/Signup';
+import { NavigationPaths } from '@navigators/Constants';
+import AppTabNavigator from '@navigators/AppTabNavigator';
+import VerifyOtp from '@screens/VerifyOtp';
+
 
 export const Routes = [
-  new RouteModel("Splash", Splash, { headerShown: false }),
-  new RouteModel("Intro", Intro, { headerShown: false }),
-  new RouteModel("Signup", Signup),
-  new RouteModel("Login", Login, { headerTitle: "Login" }),
-  new RouteModel("Dashboard", Dashboard, { headerTitle: "Home" })
+  new RouteModel(NavigationPaths.SPLASH, Splash, { headerShown: false }),
+  new RouteModel(NavigationPaths.INTRO, Intro, { headerShown: false }),
+  new RouteModel(NavigationPaths.SIGNUP, Signup),
+  new RouteModel(NavigationPaths.LOGIN, Login, { headerShown: false }),
+  new RouteModel(NavigationPaths.VERIFYOTP, VerifyOtp, { headerShown: false }),
+  new RouteModel(NavigationPaths.Tab, AppTabNavigator, { headerShown: false, }),
 ];
