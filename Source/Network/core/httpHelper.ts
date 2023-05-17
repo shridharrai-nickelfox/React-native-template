@@ -1,6 +1,6 @@
 import {APIConfig} from '../config/serverConfig';
 import {NetworkAPIRouter} from '@network/data-access/network.interface';
-import {Http_Methods_Types} from '@network/data-access/network.enum';
+import {Http_Methods_Types} from '../data-access/network.enum';
 
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";

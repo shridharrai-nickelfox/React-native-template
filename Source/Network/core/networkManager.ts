@@ -87,11 +87,8 @@ export default async function networkManager(
       // const error = err as AxiosError<any, any>;
       apiError(err?.response?.data?.error?.message);
       const IsNetworkError = err.code === HTTP_STATUS.NETWORK_ERR;
-      if (
-        router instanceof APIWithOfflineRouter &&
-        AppEnvIsDev &&
-        IsNetworkError
-      ) {
+      const IsOfflineRouter = router instanceof APIWithOfflineRouter;
+      if (IsOfflineRouter && (IsNetworkError || AppEnvIsDev)) {
         offlineNotation();
         return offlineManager(router.offlineJson);
       }

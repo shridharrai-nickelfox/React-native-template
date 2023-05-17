@@ -4,8 +4,8 @@ import {AppActions} from '@redux/Slices/AppSlice';
 
 const AppDispatcher = {
   setUserLoggedIn: (data: any) => {
-    Stores.dispatch(AppActions.SET_TOKEN(data.tokens));
-    Stores.dispatch(AppActions.LOGIN(data.user));
+    Stores.dispatch(AppActions.SET_TOKEN(data.token));
+    Stores.dispatch(AppActions.LOGIN(data));
   },
   setUserLoggedOut: () => {
     Stores.dispatch(AppActions.LOGOUT());

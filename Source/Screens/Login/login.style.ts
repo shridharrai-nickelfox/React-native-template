@@ -1,5 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import {StyleSheet} from 'react-native';
 
 const makeStyles = (theme: any) => {
   const {colors} = theme;

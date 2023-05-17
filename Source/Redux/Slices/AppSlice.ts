@@ -1,7 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+type userType = {
+  otp?: string;
+  refresh?: string;
+  token?: string;
+};
 interface AppState {
-  user: object;
+  user: userType;
   authToken: null;
   isLogged: boolean;
 }
@@ -24,7 +29,7 @@ const AppSlice = createSlice({
       state.authToken = null;
     },
     SET_TOKEN: (state, action) => {
-      state.authToken = action.payload.tokens;
+      state.authToken = action.payload;
       state.isLogged = true;
     },
   },

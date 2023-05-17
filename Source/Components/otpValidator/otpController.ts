@@ -17,6 +17,10 @@ const UseOtpController = (props: CustomOTPInputProps) => {
     if (value && index < numInputs - 1) {
       inputRefs.current[index + 1].focus();
     }
+
+    if (!value && index > 0) {
+      inputRefs.current[index - 1].focus();
+    }
   };
 
   const handleKeyPress = (index: number, key: string) => {
